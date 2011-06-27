@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets">
+    <name>Meme smileys</name>
+    <description>Shows meme smileys in every web page</description>
+    <author href="http://hcoder.org/">Esteban Manchado Velázquez</author>
+</widget>
