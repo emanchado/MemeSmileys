@@ -1,17 +1,3 @@
-var defaultSmileyTable = {"\\bxD+\\b":      "http://jeayese.com/emoticons/trollicons/lol.png",
-                          ":-?\\)+":        "http://jeayese.com/emoticons/trollicons/happy.png",
-                          ":-?\\(":         "http://jeayese.com/emoticons/trollicons/mad.png",
-                          ":-?\\(\\(+":     "http://jeayese.com/emoticons/trollicons/ohno.png",
-                          "[:;]-?P+\\b":    "http://jeayese.com/emoticons/trollicons/lick.png",
-                          "[:;]'\\(+":      "http://jeayese.com/emoticons/trollicons/cry.png",
-                          ";-?\\)+":        "http://jeayese.com/emoticons/trollicons/wink.png",
-                          ":-?D+\\b":       "http://jeayese.com/emoticons/trollicons/grin.png",
-                          ":-/+":           "http://jeayese.com/emoticons/trollicons/err.png",
-                          ":-?\\?+":        "http://jeayese.com/emoticons/trollicons/hmmm.png",
-                          "\\^_\\^":        "http://jeayese.com/emoticons/trollicons/cyoot.png",
-                          "\\b[oO]_[oO]\\b": "http://jeayese.com/emoticons/trollicons/staredad.png",
-                          "\\b[fF]+[uU][uU]+\\b": "http://jeayese.com/emoticons/trollicons/fuu.png"};
-
 var SmileyParser = function(smileyTable) { this.init(smileyTable) };
 (function ()
  {
