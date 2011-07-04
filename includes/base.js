@@ -1,6 +1,9 @@
 function replaceSmileys(where) {
     var smileyParser = new SmileyParser;
     var classes = ['commentContent', 'messageBody', 'tweet'];
+    if (typeof where.getElementsByClassName !== 'function') {
+        return;
+    }
     for (var ci = 0, l = classes.length; ci < l; ci++) {
         var nodes = where.getElementsByClassName(classes[ci]);
         for (var i in nodes) {
