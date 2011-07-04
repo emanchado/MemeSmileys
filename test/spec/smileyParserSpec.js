@@ -2,8 +2,8 @@ describe("SmileyParser", function() {
     var parser;
 
     beforeEach(function() {
-        parser = new SmileyParser({"\\bxD\\b": "lol.png",
-                                   ":-?\\)":   "smile.png"});
+        parser = new SmileyParser({"\\bxD+\\b": "lol.png",
+                                   ":-?\\)":    "smile.png"});
     });
 
     it("should return the same string when there aren't any smileys", function() {
@@ -18,21 +18,40 @@ describe("SmileyParser", function() {
 
     it("should replace simple smileys", function() {
         var source   = "I LOLed xD";
-        var expected = "I LOLed <img src=\"lol.png\" />";
+        var expected = "I LOLed <img alt=\"xD\" title=\"xD\" " +
+            "src=\"lol.png\" />";
         expect(parser.parseSmileys(source)).toEqual(expected);
     });
 
     it("should allow smileys to be configured", function() {
         var myParser = new SmileyParser({":-?\\(": "frown.png"});
         var source   = "I didn't LOL (xD) :-(";
-        var expected = "I didn't LOL (xD) <img src=\"frown.png\" />";
-        expect(myParser.parseSmileys(source)).toEqual(expected);
+        var expectedStandard = "I didn't LOL (<img alt=\"xD\" " +
+            "title=\"xD\" src=\"lol.png\" />) :-(";
+        var expectedConfigured = "I didn't LOL (xD) <img alt=\":-(\" " +
+            "title=\":-(\" src=\"frown.png\" />";
+        expect(parser.parseSmileys(source)).toEqual(expectedStandard);
+        expect(myParser.parseSmileys(source)).toEqual(expectedConfigured);
     });
 
     it("should replace many smileys", function() {
-        var source   = "I LOLed xD :-) xD";
-        var expected = "I LOLed <img src=\"lol.png\" /> " +
-            "<img src=\"smile.png\" /> <img src=\"lol.png\" />";
+        var source   = "I LOLed xD :-) xDD";
+        var expected = "I LOLed <img alt=\"xD\" title=\"xD\" " +
+            "src=\"lol.png\" /> " +
+            "<img alt=\":-)\" title=\":-)\" src=\"smile.png\" /> " +
+            "<img alt=\"xDD\" title=\"xDD\" src=\"lol.png\" />";
         expect(parser.parseSmileys(source)).toEqual(expected);
+    });
+
+    it("should be idempotent", function() {
+        var source   = "I LOLed xD :-) xDD";
+        var expected = "I LOLed <img alt=\"xD\" title=\"xD\" " +
+            "src=\"lol.png\" /> " +
+            "<img alt=\":-)\" title=\":-)\" src=\"smile.png\" /> " +
+            "<img alt=\"xDD\" title=\"xDD\" src=\"lol.png\" />";
+        var actualOnePass = parser.parseSmileys(source);
+        var actualTwoPasses = parser.parseSmileys(actualOnePass);
+        expect(actualOnePass).toEqual(expected);
+        expect(actualTwoPasses).toEqual(expected);
     });
 });
