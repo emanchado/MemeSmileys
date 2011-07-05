@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Meme smileys</title>
+    <style>
+      .text-smiley {
+        font-family: monospace;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin-left: 3em;
+        margin-right: 3em;
+      }
+
+      td {
+        padding: 7px 12px;
+      }
+
+      thead td {
+        font-variant: small-caps;
+      }
+
+      thead {
+        background-color: gray;
+        color: white;
+      }
+
+      #smiley-table {
+        border: 1px solid;
+        float: left;
+      }
+
+      .note {
+        font-style: italic;
+        font-size: 80%;
+        margin: 2ex 5em;
+      }
+
+      .note:before {
+        content: "Note: ";
+        font-weight: bold;
+        font-variant: small-caps;
+      }
+    </style>
+    <script src="includes/defaultSmileyTable.js" />
+    <script src="includes/smileyParser.js" />
+    <script>
+      window.addEventListener('load', function() {
+        var smileyParser = new SmileyParser;
+
+        var smileyExampleList = [':-)', ':)', ';)', ':-(', 'xD', 'X\'D',
+                                 ':D', ':-PP', ':\'(', ':-/', ':-?', 'O_o',
+                                 '^_^', 'FUUUU', 'fap fap fap', 'lol',
+                                 'Y U NO', '-troll-'];
+
+        var smileyTable = document.getElementById('smiley-table');
+        var len = smileyExampleList.length;
+        var currentRowDomObject;
+        for (var i = 0; i < len; i += 1) {
+          if (i % 2 === 0) {
+            currentRowDomObject = document.createElement('tr');
+          }
+          var textCellDomObject = document.createElement('td');
+          var graphicCellDomObject = document.createElement('td');
+          textCellDomObject.innerHTML = smileyExampleList[i];
+          textCellDomObject.className = 'text-smiley';
+          graphicCellDomObject.innerHTML =
+            smileyParser.parseSmileys(smileyExampleList[i]);
+          graphicCellDomObject.className = 'graphical-smiley';
+          currentRowDomObject.appendChild(textCellDomObject);
+          currentRowDomObject.appendChild(graphicCellDomObject);
+          if (i % 2 === 0) {
+            if (i === len - 1) {
+              var emptyCellDomObject1 = document.createElement('td');
+              emptyCellDomObject1.innerHTML = '&nbsp;';
+              var emptyCellDomObject2 = document.createElement('td');
+              emptyCellDomObject2.innerHTML = '&nbsp;';
+              currentRowDomObject.appendChild(emptyCellDomObject1);
+              currentRowDomObject.appendChild(emptyCellDomObject2);
+            }
+            smileyTable.appendChild(currentRowDomObject);
+          }
+        }
+      }, false);
+    </script>
+  </head>
+  <body>
+    <h1>Supported smileys</h1>
+
+    <table id="smiley-table">
+      <thead>
+      <tr>
+        <td>Text</td>
+        <td>Result</td>
+        <td>Text</td>
+        <td>Result</td>
+      </tr>
+      <tbody>
+    </table>
+
+    <div class="note">Some repetitions and variations are supported
+    too, like "FFFFUUUU", "X-DDDD", "fap fap fap fap", "o_o". The goal
+    of this extension is to convert to graphical representations
+    smileys that people normally use, not making anyone learn the
+    "rules" to show these smileys. After all, only those using this
+    extension can see them&hellip;</div>
+  </body>
+</html>
