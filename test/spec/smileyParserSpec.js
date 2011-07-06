@@ -66,4 +66,33 @@ describe("SmileyParser", function() {
         expect(actualOnePass).toEqual(expected);
         expect(actualTwoPasses).toEqual(expected);
     });
+
+    it("should play well with xDDD", function() {
+        var winkParser = new SmileyParser({":-?\\)+":              'imgHappy.png',
+                          ":-?\\(\\(+":           'imgOhNo.png',
+                          "[:;]-?P+\\b":          'imgLick.png',
+                          "[:;]'\\(+":            'imgCry.png',
+                          ";-?\\)+":              'imgWink.png',
+                          ":-?D+\\b":             'imgSoMuchWin.png',
+                          "[xX][-']?D+\\b":       'imgGrin.png',
+                          ":-/+":                 'imgErr.png',
+                          ":-?\\?+":              'imgHmmm.png',
+                          "\\^_\\^":              'imgCyoot.png',
+                          "\\b[oO]_[oO]\\b":      'imgStareDad.png',
+                          "\\b[fF]+[uU][uU]+\\b": 'imgFuu.png',
+                          "\\bY U NO\\b":         'imgYUNo.png',
+                          "\\bfap fap( fap)+\\b": 'imgFap.png',
+                                           "-troll-":              'imgTroll.png'});
+        var source   = ":-((( :))) ;'(( ;-)) xDDD";
+        var expected = "<img alt=\":-(((\" title=\":-(((\" " +
+               "src=\"imgOhNo.png\" /> <img alt=\":)))\" title=\":)))\" " +
+               "src=\"imgHappy.png\" /> <img alt=\";'((\" title=\";'((\" " +
+               "src=\"imgCry.png\" /> <img alt=\";-))\" title=\";-))\" " +
+               "src=\"imgWink.png\" /> <img alt=\"xDDD\" title=\"xDDD\" " +
+               "src=\"imgGrin.png\" />";
+        var actualOnePass = winkParser.parseSmileys(source);
+        var actualTwoPasses = winkParser.parseSmileys(actualOnePass);
+        expect(actualOnePass).toEqual(expected);
+        expect(actualTwoPasses).toEqual(expected);
+    });
 });
