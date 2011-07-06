@@ -54,4 +54,62 @@ describe("SmileyParser", function() {
         expect(actualOnePass).toEqual(expected);
         expect(actualTwoPasses).toEqual(expected);
     });
+
+    it("should play well with ;))", function() {
+        var winkParser = new SmileyParser({"\\bxD+\\b": "lol.png",
+                                           ";-?\\)+":   "wink.png"});
+        var source   = "Jajaja si, puede ser una solución, pero admito mas ideas... ;))";
+        var expected = "Jajaja si, puede ser una solución, pero admito mas ideas... <img alt=\";))\" title=\";))\" " +
+               "src=\"wink.png\" />";
+        var actualOnePass = winkParser.parseSmileys(source);
+        var actualTwoPasses = winkParser.parseSmileys(actualOnePass);
+        expect(actualOnePass).toEqual(expected);
+        expect(actualTwoPasses).toEqual(expected);
+    });
+
+    it("should play well with character repetitions", function() {
+        var winkParser = new SmileyParser({
+                          ":-?\\)+":              'imgHappy.png',
+                          ":-?\\(\\(+":           'imgOhNo.png',
+                          "[:;]-?P+\\b":          'imgLick.png',
+                          "[:;]'\\(+":            'imgCry.png',
+                          ";-?\\)+":              'imgWink.png',
+                          ":-?D+\\b":             'imgSoMuchWin.png',
+                          "[xX][-']?D+\\b":       'imgGrin.png',
+                          ":-/+":                 'imgErr.png',
+                          ":-?\\?+":              'imgHmmm.png',
+                          "\\^_\\^":              'imgCyoot.png',
+                          "\\b[oO]_[oO]\\b":      'imgStareDad.png',
+                          "\\b[fF]+[uU][uU]+\\b": 'imgFuu.png',
+                          "\\bY U NO\\b":         'imgYUNo.png',
+                          "\\bfap fap( fap)+\\b": 'imgFap.png',
+                          "-troll-":              'imgTroll.png'});
+        var source   = "FFUUUU :-((( :))) ;'(( ;-)) xDDD ffuuu";
+        var expected = "<img alt=\"FFUUUU\" title=\"FFUUUU\" " +
+               "src=\"imgFuu.png\" /> <img alt=\":-(((\" title=\":-(((\" " +
+               "src=\"imgOhNo.png\" /> <img alt=\":)))\" title=\":)))\" " +
+               "src=\"imgHappy.png\" /> <img alt=\";'((\" title=\";'((\" " +
+               "src=\"imgCry.png\" /> <img alt=\";-))\" title=\";-))\" " +
+               "src=\"imgWink.png\" /> <img alt=\"xDDD\" title=\"xDDD\" " +
+               "src=\"imgGrin.png\" /> <img alt=\"ffuuu\" title=\"ffuuu\" " +
+               "src=\"imgFuu.png\" />";
+        var actualOnePass = winkParser.parseSmileys(source);
+        var actualTwoPasses = winkParser.parseSmileys(actualOnePass);
+        expect(actualOnePass).toEqual(expected);
+        expect(actualTwoPasses).toEqual(expected);
+    });
+
+    it("should play well with word repetitions", function() {
+        var winkParser = new SmileyParser({"\\bfap fap( fap)+\\b":
+                                               'imgFap.png'});
+        var source   = "fap fap fap mumble mumble fap fap fap fap";
+        var expected = "<img alt=\"fap fap fap\" title=\"fap fap fap\" " +
+               "src=\"imgFap.png\" /> mumble mumble " +
+               "<img alt=\"fap fap fap fap\" title=\"fap fap fap fap\" " +
+               "src=\"imgFap.png\" />";
+        var actualOnePass = winkParser.parseSmileys(source);
+        var actualTwoPasses = winkParser.parseSmileys(actualOnePass);
+        expect(actualOnePass).toEqual(expected);
+        expect(actualTwoPasses).toEqual(expected);
+    });
 });
