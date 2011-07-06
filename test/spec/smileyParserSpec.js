@@ -54,4 +54,16 @@ describe("SmileyParser", function() {
         expect(actualOnePass).toEqual(expected);
         expect(actualTwoPasses).toEqual(expected);
     });
+
+    it("should play well with ;))", function() {
+        var winkParser = new SmileyParser({"\\bxD+\\b": "lol.png",
+                                           ";-?\\)+":   "wink.png"});
+        var source   = "Jajaja si, puede ser una solución, pero admito mas ideas... ;))";
+        var expected = "Jajaja si, puede ser una solución, pero admito mas ideas... <img alt=\";))\" title=\";))\" " +
+               "src=\"wink.png\" />";
+        var actualOnePass = winkParser.parseSmileys(source);
+        var actualTwoPasses = winkParser.parseSmileys(actualOnePass);
+        expect(actualOnePass).toEqual(expected);
+        expect(actualTwoPasses).toEqual(expected);
+    });
 });
