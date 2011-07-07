@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Smiley parsing test</title>
+    <script src="includes/defaultSmileyTable.js" />
+    <script src="includes/smileyParser.js" />
+    <script>
+      window.addEventListener('load', function() {
+        var myOwnParser = new SmileyParser();
+        // alert(myOwnParser.parseSmileys('lol'));
+      }, false);
+    </script>
+  </head>
+  <body>
+    <div class="commentContent">o_o O_O O_o o_O / foo fOo food oO Oo oo OO o-o</div>
+    <div class="commentContent">:-| :| :-/ :-/// / :/ http://www.example.com</div>
+    <div class="commentContent">:@@@@ :-@@@ fuu fffuuuu / fu kung-fu fubar</div>
+    <div class="commentContent">Y U NO BELIEVE US / BY U NO BY U NOTING</div>
+    <div class="commentContent">fap fap fap fap fap fap  fap fap fap / fapping fap fap</div>
+    <div class="commentContent">-troll- / troll-ing</div>
+    <div class="commentContent">^_^ :? :-? :??? :-??? X'D X-D XD x'D x-D xD :D :-D :DDD ;) ;-)) ;'( :'( :'(( :-P ;-P :P ;P :) :-) :))) :( :(((( :-( / :d :-d</div>
+    <div class="commentContent">lol LOL / LoL lOl trolol trolololo</div>
+  </body>
+</html>
