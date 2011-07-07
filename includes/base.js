@@ -16,8 +16,8 @@ function replaceSmileys(where) {
 
 window.addEventListener('load', function() {
     replaceSmileys(document);
-}, false);
 
-window.document.addEventListener('DOMNodeInserted', function(event) {
-    replaceSmileys(event.target);
-}, true);
+    window.document.addEventListener('DOMNodeInserted', function(event) {
+        replaceSmileys(event.target);
+    }, false);
+}, false);
