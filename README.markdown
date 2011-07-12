@@ -9,6 +9,7 @@ this writing, Facebook and Twitter). The official,
 is always availabe at the
 [Opera extensions website](https://addons.opera.com/addons/extensions/).
 
-It's basically an independent implementation of the same idea as
+I basically thought
 [Troll-emoticons for Facebook & Twitter](https://chrome.google.com/webstore/detail/hndllphbhpadfpoikpaofkkkpkpnmjik),
-a Google Chrome extension.
+a Google Chrome extension, was funny, and implemented an Opera
+extension inspired by it.
