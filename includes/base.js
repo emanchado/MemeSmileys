@@ -1,6 +1,6 @@
 function replaceSmileys(where) {
     var smileyParser = new SmileyParser;
-    var classes = ['commentContent', 'messageBody', 'tweet-text'];
+    var classes = ['commentContent', 'messageBody', 'tweet-text', 'a-b-f-i-p-R', 'a-f-i-W-p'];
     if (typeof where.getElementsByClassName !== 'function') {
         return;
     }
