@@ -1,8 +1,8 @@
 function replaceSmileys(where) {
     var smileyParser = new SmileyParser;
-    var classes = ['commentContent', 'messageBody',   # Facebook
-                   'tweet-text',                      # Twitter
-                   'a-b-f-i-p-R', 'a-f-i-W-p'         # Google Plus
+    var classes = ['commentContent', 'messageBody',   // Facebook
+                   'tweet-text',                      // Twitter
+                   'a-b-f-i-p-R', 'a-f-i-W-p'         // Google Plus
                   ];
     if (typeof where.getElementsByClassName !== 'function') {
         return;
