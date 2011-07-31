@@ -44,5 +44,6 @@ var defaultSmileyTable = {"\\blol\\b|\\bLOL\\b":  base64ToURI(imgLol),
                           "\\bY U NO ":           base64ToURI(imgYUNo),
                           "\\bfap fap( fap)+\\b": base64ToURI(imgFap),
                           "&lt;/troll&gt;":       base64ToURI(imgTroll),
+                          ":-?7":                 base64ToURI(imgTroll),
                           ":-?\\|":               base64ToURI(imgPoker),
                           ":-?C":                 base64ToURI(imgBigFrown)};
