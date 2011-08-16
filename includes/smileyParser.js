@@ -10,9 +10,17 @@ var SmileyParser = function(smileyTable) { this.init(smileyTable) };
          var result = string;
          for (var smiley in this._smileyTable) {
              var self = this;
-             result = result.replace(new RegExp('(")?' + smiley, "g"),
+             var regExp = new RegExp('(["a-zA-Z0-9;#])?' + smiley, "g");
+             result = result.replace(regExp,
                                      function ($0, $1) {
-                                         return $1 ? $0 : ("<img alt=\"" + $0 + "\" title=\"" + $0 + "\" src=\"" + self._smileyTable[smiley] + "\" />");
+                                         return $1 ?
+                                             $0
+                                             :
+                                             ("<img alt=\"" + $0 +
+                                              "\" title=\"" + $0 +
+                                              "\" src=\"" +
+                                              self._smileyTable[smiley] +
+                                              "\" />");
                                      });
          }
          return result;

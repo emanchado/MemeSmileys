@@ -112,4 +112,33 @@ describe("SmileyParser", function() {
         expect(actualOnePass).toEqual(expected);
         expect(actualTwoPasses).toEqual(expected);
     });
+
+    it("should be a bit more picky when detecting smilies", function() {
+        var myParser = new SmileyParser({"[:;]-?P+\\b":         'wink.png',
+                                         ":-?C":                'frown.png',
+                                         "\\blol\\b|\\bLOL\\b": 'lol.png'});
+        var source1 = "Newsflash:Catastrophic day for S&amp;P's #lol";
+        expect(myParser.parseSmileys(source1)).toEqual(source1);
+        var source2   = "Smilies: :C ;P lol";
+        var expected2 = "Smilies: <img alt=\":C\" title=\":C\" " +
+            "src=\"frown.png\" /> <img alt=\";P\" title=\";P\" " +
+            "src=\"wink.png\" /> <img alt=\"lol\" title=\"lol\" " +
+            "src=\"lol.png\" />";
+        expect(myParser.parseSmileys(source2)).toEqual(expected2);
+    });
+
+    it("should detect smilies at the start of the string", function() {
+        var myParser = new SmileyParser({"[:;]-?P+\\b":         'wink.png',
+                                         ":-?C":                'frown.png',
+                                         "\\blol\\b|\\bLOL\\b": 'lol.png'});
+        var source2   = ":C";
+        var source3   = ";P";
+        var source4   = "lol";
+        var expected2 = "<img alt=\":C\" title=\":C\" src=\"frown.png\" />";
+        var expected3 = "<img alt=\";P\" title=\";P\" src=\"wink.png\" />";
+        var expected4 = "<img alt=\"lol\" title=\"lol\" src=\"lol.png\" />";
+        expect(myParser.parseSmileys(source2)).toEqual(expected2);
+        expect(myParser.parseSmileys(source3)).toEqual(expected3);
+        expect(myParser.parseSmileys(source4)).toEqual(expected4);
+    });
 });
