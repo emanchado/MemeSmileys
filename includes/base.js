@@ -3,7 +3,8 @@ function replaceSmileys(where) {
     var classes = ['commentContent', 'messageBody',
                    'MessagingMessage',                // Facebook
                    'tweet-text',                      // Twitter
-                   'a-b-f-i-p-R', 'a-f-i-W-p'         // Google Plus
+                   'a-b-f-i-p-R', 'a-f-i-W-p',        // Google Plus (obsolete)
+                   'a-N-j Hx qp', 'xk'                // Google Plus
                   ];
     if (typeof where.getElementsByClassName !== 'function') {
         return;
