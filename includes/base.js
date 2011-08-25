@@ -4,7 +4,11 @@ function replaceSmileys(where) {
                    'MessagingMessage',                // Facebook
                    'tweet-text',                      // Twitter
                    'a-b-f-i-p-R', 'a-f-i-W-p',        // Google Plus (obsolete)
-                   'a-N-j Hx qp', 'xk'                // Google Plus
+                   'a-N-j Hx qp', 'xk',               // Google Plus
+                   'my_current_info',                 // VKontakte
+                   'mail_envelope_body wall_module wrapped',
+                   'wall_post_text', 'wall_reply_text',
+                   'wall_module', 'profile_full_info'
                   ];
     if (typeof where.getElementsByClassName !== 'function') {
         return;
