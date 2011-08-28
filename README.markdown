@@ -13,3 +13,5 @@ I basically thought
 [Troll-emoticons for Facebook & Twitter](https://chrome.google.com/webstore/detail/hndllphbhpadfpoikpaofkkkpkpnmjik),
 a Google Chrome extension, was funny, and implemented an Opera
 extension inspired by it.
+
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/thing/383873/Meme-smileys-Opera-extension)
