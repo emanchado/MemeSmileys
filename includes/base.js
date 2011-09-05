@@ -8,7 +8,7 @@ function replaceSmileys(where) {
                    'my_current_info',                 // VKontakte
                    'mail_envelope_body wall_module wrapped',
                    'wall_post_text', 'wall_reply_text',
-                   'wall_module', 'profile_full_info'
+                   'wall_module', 'profile_full_info', 'fc_msgs'
                   ];
     if (typeof where.getElementsByClassName !== 'function') {
         return;
