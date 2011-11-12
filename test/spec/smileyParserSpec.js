@@ -160,4 +160,14 @@ describe("SmileyParser", function() {
         expect(source3).toParseTo(expected3, myParser);
         expect(source4).toParseTo(expected4, myParser);
     });
+
+    it("should detect smilies with angle brackets", function() {
+        var myParser = new SmileyParser({"</troll(ing)?>": 'troll.png'});
+        var source   = "&lt;/troll&gt; &lt;/trolling&gt;";
+        var expected = "<img alt=\"&lt;/troll&gt;\" src=\"troll.png\" "
+                       + "title=\"&lt;/troll&gt;\" /> "
+                       + "<img alt=\"&lt;/trolling&gt;\" src=\"troll.png\" "
+                       + "title=\"&lt;/trolling&gt;\" />";
+        expect(source).toParseTo(expected, myParser);
+    });
 });

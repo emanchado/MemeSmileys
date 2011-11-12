@@ -15,7 +15,10 @@ var SmileyParser = function(smileyTable) { this.init(smileyTable); };
                                           var img =
                                               document.createElement('img');
                                           img.src = self._smileyTable[s];
-                                          img.alt = img.title = text;
+                                          img.alt = img.title =
+                                            text.replace(/&/g, '&amp;').
+                                                         replace(/</g, '&lt;').
+                                                         replace(/>/g, '&gt;');
                                           return img;
                                         };
                                       })(smiley)});
