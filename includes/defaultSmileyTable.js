@@ -29,6 +29,7 @@ function base64ToURI(base64String) {
 }
 
 var defaultSmileyTable = {"\\blol\\b|\\bLOL\\b":  base64ToURI(imgLol),
+                          " лол ":               base64ToURI(imgLol),
                           ":-?\\)+":              base64ToURI(imgHappy),
                           ":-?\\(+":              base64ToURI(imgOhNo),
                           "[:;]-?P+\\b":          base64ToURI(imgLick),
