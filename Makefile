@@ -1,5 +1,5 @@
 EXTENSION_TARGET = meme-smileys.oex
-DIST_FILES = config.xml icon.png includes/base.js includes/defaultSmileyTable.js includes/smileyParser.js index.html options.html
+DIST_FILES = config.xml icon.png includes/base.js includes/defaultSmileyTable.js includes/smileyParser.js includes/replace.js index.html options.html
 
 all:
 
