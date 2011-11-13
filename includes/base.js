@@ -9,7 +9,12 @@ function replaceSmileys(where) {
                    'my_current_info',                 // VKontakte
                    'mail_envelope_body wall_module wrapped',
                    'wall_post_text', 'wall_reply_text',
-                   'wall_module', 'profile_full_info', 'fc_msgs'
+                   'wall_module', 'profile_full_info', 'fc_msgs',
+                   // The following is for addons.opera.com, but will
+                   // probably make it trigger in a lot of other
+                   // sites. This should be fine now, as the smiley
+                   // detection is safer
+                   'comment'
                   ];
     if (typeof where.getElementsByClassName !== 'function') {
         return;
