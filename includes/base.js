@@ -3,8 +3,8 @@ var smileyParser = null;
 function replaceSmileys(where) {
     var classes = ['commentContent', 'messageBody',   // Facebook
                    'tweet-text',                      // Twitter
-                   'a-b-f-i-p-R', 'a-f-i-W-p',        // Google Plus (obsolete)
-                   'a-N-j Hx qp', 'xk',               // Google Plus
+                   'rXnUBd', 'kH', 'oX401d Wt',       // Google Plus
+                   's-r-Ge-ec',
                    'my_current_info',                 // VKontakte
                    'mail_envelope_body wall_module wrapped',
                    'wall_post_text', 'wall_reply_text',
