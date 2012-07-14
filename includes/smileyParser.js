@@ -17,6 +17,7 @@ var SmileyParser = function(smileyTable) { this.init(smileyTable); };
          smileyDom.innerHTML = text.replace(/&/g, '&amp;').
                                     replace(/</g, '&lt;').
                                     replace(/>/g, '&gt;');
+         smileyDom.title = text;
          var url = "data:image/png;base64," + smileyInfo.imageDataBase64;
          smileyDom.style.backgroundImage = "url(" + url + ")";
          if (smileyInfo.height !== undefined) {
