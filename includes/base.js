@@ -1,3 +1,5 @@
+/*global SmileyParser*/
+
 var smileyParser = null;
 
 function replaceSmileys(where) {
@@ -27,7 +29,7 @@ function replaceSmileys(where) {
 }
 
 window.addEventListener('load', function() {
-    smileyParser = new SmileyParser;
+    smileyParser = new SmileyParser();
     replaceSmileys(document);
 
     window.document.addEventListener('DOMNodeInserted', function(event) {

@@ -1,3 +1,5 @@
+/*global defaultSmileyTable, replaceTextWithElements*/
+
 var SmileyParser = function(smileyTable) { this.init(smileyTable); };
 (function ()
  {
@@ -9,7 +11,7 @@ var SmileyParser = function(smileyTable) { this.init(smileyTable); };
       return the text back, without creating any graphical smiley */
      function replaceFunction(s) {
        return function(text, lb) {
-         if (lb) return document.createTextNode(text);
+         if (lb) { return document.createTextNode(text); }
          var smileyInfo = self._smileyTable[s];
          var smileyDom = document.createElement('abbrev');
          smileyDom.innerHTML = text.replace(/&/g, '&amp;').
@@ -17,10 +19,12 @@ var SmileyParser = function(smileyTable) { this.init(smileyTable); };
                                     replace(/>/g, '&gt;');
          var url = "data:image/png;base64," + smileyInfo.imageDataBase64;
          smileyDom.style.backgroundImage = "url(" + url + ")";
-         if (smileyInfo.height !== undefined)
+         if (smileyInfo.height !== undefined) {
            smileyDom.style.height  = smileyInfo.height + "px";
-         if (smileyInfo.width !== undefined)
+         }
+         if (smileyInfo.width !== undefined) {
            smileyDom.style.width   = smileyInfo.width  + "px";
+         }
          smileyDom.style.display = 'inline-block';
          smileyDom.style.color   = 'transparent';
          smileyDom.style.overflow = 'hidden';
