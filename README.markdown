@@ -1,3 +1,20 @@
+DEPRECATED
+==========
+
+This extension is deprecated: it was written for Opera 12, it will not work (I guess?) on Opera >= 15.
+
+
+
+
+
+
+
+
+
+
+
+Old README contents
+===================
 Meme Smileys
 ============
 
